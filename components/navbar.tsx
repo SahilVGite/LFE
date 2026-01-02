@@ -111,12 +111,12 @@ export function Navbar({ user }: NavbarProps) {
                             </DropdownMenu>
                         </>
                     ) : (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center">
                             <Button variant="ghost" asChild className="hidden sm:inline-flex">
-                                <Link href="/auth/login">Login</Link>
+                                <Link href="/auth/login"  style={{background: 'var(--primary-gradient)'}} className="font-bold font-geist tracking-[-0.04em] text-white flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 hover:brightness-95 transition-all cursor-pointer bodySub hover:text-white">Login</Link>
                             </Button>
                             <Button asChild>
-                                <Link href="/auth/sign-up">Get Started</Link>
+                                <Link href="/auth/sign-up" className="font-bold font-geist tracking-[-0.04em] text-primary! flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 hover:brightness-95 transition-all cursor-pointer bodySub bg-transparent border border-primary hover:text-white!">Register</Link>
                             </Button>
                         </div>
                     )}
