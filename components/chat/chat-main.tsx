@@ -31,6 +31,7 @@ interface ChatMainProps {
   activeSessionId: string | null;
   onSessionCreated: (session: any) => void;
   onCreditsUpdate?: (credits: number) => void;
+  isOpen: boolean;
 }
 
 const QUICK_PROMPTS = [
@@ -44,6 +45,7 @@ export function ChatMain({
   activeSessionId,
   onSessionCreated,
   onCreditsUpdate,
+  isOpen,
 }: ChatMainProps) {
   const searchParams = useSearchParams();
   const initialQueryProcessed = useRef(false);
@@ -318,7 +320,7 @@ export function ChatMain({
        JSX
     ---------------------------------------------- */
   return (
-    <div className={`flex-1 flex flex-col ${!shouldShowMessages && 'justify-center'}`}>
+    <div className={`flex-1 flex flex-col transition-all ${!shouldShowMessages && 'justify-center'} ${isOpen ? "[@media(max-width:768px)]:w-full [@media(max-width:950px)]:max-w-[62%] [@media(max-width:1600px)]:max-w-[70%] [@media(min-width:1800px)]:max-w-[85%] ml-auto" : "max-w-full"}`}>
       {/* Header */}
       {/* {activeSessionId && (
                 <div className="border-b border-border px-6 py-4 flex items-center justify-between">
@@ -549,7 +551,7 @@ export function ChatMain({
               <Button
                 type="submit"
                 size="icon"
-                className="rounded-full bg-linear-to-b from-[#F6B501] to-[#FF7948] p-6 lg:p-8"
+                className="rounded-full bg-linear-to-b from-[#F6B501] to-[#FF7948] p-6 lg:p-8 cursor-pointer"
                 disabled={
                   (!input.trim() && attachments.length === 0) || isLoading
                 }

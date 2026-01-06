@@ -5,6 +5,8 @@ import { FeaturesSection } from "@/components/home/features-section";
 import { TrustSection } from "@/components/home/trust-section";
 import { FAQSection } from "@/components/home/faq-section";
 import BlogSec from "@/components/home/blogs";
+import CoreValues from "@/components/home/CoreValues";
+import Pricing from "@/components/home/Pricing";
 
 export default async function HomePage() {
   const supabase = await createClient();
@@ -25,8 +27,10 @@ export default async function HomePage() {
   return (
     <>
       <HeroSection isLoggedIn={!!user} />
-      <FeaturesSection />
+      {/* <FeaturesSection /> */}
+      <Pricing />
       <TrustSection />
+      <CoreValues />
       <HowItWorks />
       <FAQSection />
       <BlogSec />

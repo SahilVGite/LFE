@@ -115,6 +115,7 @@ export function ChatInterface({ user, initialSessions }: ChatInterfaceProps) {
         user={currentUser}
         activeSessionId={activeSessionId}
         onSessionCreated={handleSessionCreated}
+        isOpen={sidebarOpen}
         onCreditsUpdate={(credits: number) => setCurrentUser((prev) => ({ ...prev, credits }))}
       />
     </div>

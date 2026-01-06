@@ -10,6 +10,13 @@ import SendOffers from "./SendOffers";
 import ShareFacebook from "./ShareFacebook";
 import ShareTelegram from "./ShareTelegram";
 import ShareInsta from "./ShareInsta";
+import OrangeUpload from "./OrangeUpload";
+import AnalysesKey from "./AnalysesKey";
+import OrangeReport from "./OrangeReport";
+import OrangeFile from "./OrangeFile";
+import OrangeBalence from "./OrangeBalence";
+import RegularPlan from "./RegularPlan";
+import PremiumPlan from "./PremiumPlan";
 
 export {
     Insta,
@@ -24,4 +31,11 @@ export {
     ShareFacebook,
     ShareTelegram,
     ShareInsta,
+    OrangeUpload,
+    AnalysesKey,
+    OrangeReport,
+    OrangeFile,
+    OrangeBalence,
+    RegularPlan,
+    PremiumPlan,
 }

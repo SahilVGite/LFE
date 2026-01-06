@@ -1,3 +1,9 @@
+## 🚀 Live Demo
+
+🌐 [Visit the Website] (https://legalcaseai.netlify.app)
+
+---
+
 # LegalCaseAI - AI-Powered Legal Research Platform
 
 ## Overview

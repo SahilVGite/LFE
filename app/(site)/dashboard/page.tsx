@@ -38,7 +38,7 @@ export default async function DashboardPage() {
     .limit(10);
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col py-10 md:py-12 lg:py-25">
       <DashboardContent
         user={profile}
         searchHistory={searchHistory || []}

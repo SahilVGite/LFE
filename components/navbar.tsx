@@ -41,7 +41,7 @@ export function Navbar({ user }: NavbarProps) {
 
     return (
         <header className="fixed top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 rounded-b-[20px] lg:rounded-b-[40px]">
-            <div className="container mx-auto flex items-center justify-between px-4 py-2">
+            <div className="main-wrapper mx-auto flex items-center justify-between px-4 py-2">
                 <SiteLogo />
 
                 {/* Desktop Navigation */}

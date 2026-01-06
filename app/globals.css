@@ -221,11 +221,11 @@ html {
 }
 
 .footerWrapper{@apply max-w-[1555px] mx-auto;}
-.main-wrapper{@apply max-w-[1600px] mx-auto;}
-.sub-wrapper{@apply max-w-[90%] md:max-w-[80%] [@media(min-width:1536px)]:max-w-[1440px] mx-auto;}
+.main-wrapper{@apply [@media(max-width:950px)]:px-4 [@media(max-width:1650px)]:px-7 [@media(min-width:1650px)]:max-w-400 mx-auto;}
+.sub-wrapper{@apply max-w-[90%] md:max-w-[80%] [@media(min-width:1536px)]:max-w-360 mx-auto;}
 .commonGap{@apply py-10 md:py-12 lg:py-25;}
 
-.commonTitle{@apply text-[#1A202C] font-medium tracking-[0.0003125em];font-size: var(--common-title);} /* 40px */
+.commonTitle{@apply text-[#1A202C] font-medium tracking-[0.0003125em] leading-[1.5em];font-size: var(--common-title);} /* 40px */
 .largeTitle{font-size: var(--large-title);} /* 44px */
 .secTitle{font-size: var(--sec-title);} /* 21.1px */
 .subTitle{font-size: var(--sub-title);} /* 24px */
