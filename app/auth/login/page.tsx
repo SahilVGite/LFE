@@ -29,7 +29,7 @@ function LoginForm() {
         try {
             const supabase = createClient()
 
-            console.log("[v0] Login attempt for:", email)
+            console.log("Login attempt for:", email)
 
             const { data, error: signInError } = await supabase.auth.signInWithPassword({
                 email,
@@ -37,7 +37,7 @@ function LoginForm() {
             })
 
             if (signInError) {
-                console.error("[v0] Login error:", signInError)
+                console.error("Login error:", signInError)
 
                 if (signInError.message.includes("Invalid login credentials")) {
                     throw new Error("Invalid email or password. Please check your credentials and try again.")
@@ -58,13 +58,13 @@ function LoginForm() {
                 throw new Error("Login failed. Please try again.")
             }
 
-            console.log("[v0] Login successful for user:", data.user.id)
+            console.log("Login successful for user:", data.user.id)
 
             const redirectUrl = redirect || "/chat"
-            console.log("[v0] Redirecting to:", redirectUrl)
+            console.log("Redirecting to:", redirectUrl)
             window.location.href = redirectUrl
         } catch (error: unknown) {
-            console.error("[v0] Login failed:", error)
+            console.error("Login failed:", error)
             setError(error instanceof Error ? error.message : "Failed to login. Please try again.")
             setIsLoading(false)
         }
@@ -76,9 +76,9 @@ function LoginForm() {
 
         try {
             const supabase = createClient()
-            const redirectTo = process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/auth/callback`
+            const redirectTo = `${location.origin}/auth/callback`
 
-            console.log("[v0] Google OAuth redirect:", redirectTo)
+            console.log("Google OAuth redirect:", redirectTo)
 
             const { error: oauthError } = await supabase.auth.signInWithOAuth({
                 provider: "google",
@@ -92,7 +92,7 @@ function LoginForm() {
             })
 
             if (oauthError) {
-                console.error("[v0] Google OAuth error:", oauthError)
+                console.error("Google OAuth error:", oauthError)
                 if (oauthError.message.includes("not enabled")) {
                     throw new Error("Google sign-in is not configured yet. Please contact support or use email/password login.")
                 }
@@ -101,7 +101,7 @@ function LoginForm() {
 
             // OAuth will redirect, so this code won't execute
         } catch (error: unknown) {
-            console.error("[v0] Google login failed:", error)
+            console.error("Google login failed:", error)
             setError(error instanceof Error ? error.message : "Failed to login with Google")
             setIsGoogleLoading(false)
         }

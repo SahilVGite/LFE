@@ -91,21 +91,21 @@ const pricingPlan = [
 ];
 
 const Pricing = () => {
-  return (
-    <section className='commonGap relative'>
-      <div className='main-wrapper'>
-        <div className='relative'>
-            <img src="/hmPricingTop.png" alt="" className='absolute max-w-[26%]  md:max-w-[16%] [@media(min-width:1650px)]:max-w-75 -top-14  left-4 md:left-7 [@media(min-width:1650px)]:-left-25 z-10' />
-            <img src="/hmPricingBtm.png" alt="" className='absolute -bottom-14 lg:-bottom-25 right-7 max-w-[22%]  md:max-w-[12%] [@media(min-width:1650px)]:max-w-52 z-10' />
-            <div className='rounded-3xl shadow-[14px_17px_33px_4px_rgba(112,144,176,0.08)] bg-[#FFFEF6] px-4 pt-10 md:pt-12 lg:pt-25 pb-20 md:pb-26 lg:pb-50 relative overflow-hidden'>
-                <img src="/hmpricingbgtop.png" alt="" className='absolute top-0 w-full z-2' />
-                <BadgeTitle badge='Trust Indicators' title='Find your perfect plan' className='mb-6 md:mb-10 lg:mb-16 text-center relative z-20' />
-                <PlanGrid plans={pricingPlan} />
+    return (
+        <section id='pricing' className='commonGap relative'>
+            <div className='main-wrapper'>
+                <div className='relative'>
+                    <img src="/hmPricingTop.png" alt="" className='absolute max-w-[26%]  md:max-w-[16%] [@media(min-width:1650px)]:max-w-75 -top-14  left-4 md:left-7 [@media(min-width:1650px)]:-left-25 z-10' />
+                    <img src="/hmPricingBtm.png" alt="" className='absolute -bottom-14 lg:-bottom-25 right-7 max-w-[22%]  md:max-w-[12%] [@media(min-width:1650px)]:max-w-52 z-10' />
+                    <div className='rounded-3xl shadow-[14px_17px_33px_4px_rgba(112,144,176,0.08)] bg-[#FFFEF6] px-4 pt-10 md:pt-12 lg:pt-25 pb-20 md:pb-26 lg:pb-50 relative overflow-hidden'>
+                        <img src="/hmpricingbgtop.png" alt="" className='absolute top-0 w-full z-2' />
+                        <BadgeTitle badge='Trust Indicators' title='Find your perfect plan' className='mb-6 md:mb-10 lg:mb-16 text-center relative z-20' />
+                        <PlanGrid plans={pricingPlan} />
+                    </div>
+                </div>
             </div>
-        </div>
-      </div>
-    </section>
-  )
+        </section>
+    )
 }
 
 export default Pricing;

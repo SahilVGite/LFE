@@ -48,7 +48,7 @@ export function HowItWorks() {
                         </Card>
                     ))}
                 </div>
-                <div className="mt-25"><button className="text-white font-medium bodySub py-3.5 px-10 rounded-full mx-auto block cursor-pointer" style={{background: 'var(--primary-gradient)'}}>Preview Sample Report</button></div>
+                <div className="mt-25"><button className="text-white bg-(--btn-bg) shadow-[0px_4.273px_12.819px_-4.273px_#789DF6] font-medium bodySub py-3.5 px-10 rounded-full mx-auto block cursor-pointer">Preview Sample Report</button></div>
             </div>
         </section>
     )

@@ -83,17 +83,17 @@ export function Footer() {
                         </div>
                         <h4 className="font-semibold body-sub mb-4 text-white font-noto mt-10">follow on:</h4>
                         <div className="flex gap-4 mt-4">
-                            <Link href="#" className="hover:text-primary transition-colors border border-[#777777] rounded-lg hover:border-primary text-[#777777]">
-                                <Insta className="transition-colors text-[#777777] group-hover:text-primary" />
+                            <Link href="#" className="hover:text-(--btn-bg) transition-colors border border-[#777777] rounded-lg hover:border-(--btn-bg) text-[#777777]">
+                                <Insta className="transition-colors text-[#777777] group-hover:text-(--btn-bg)" />
                             </Link>
-                            <Link href="#" className="hover:text-primary transition-colors border border-[#777777] rounded-lg hover:border-primary text-[#777777]">
-                                <Facebook className="transition-colors text-[#777777] group-hover:text-primary" />
+                            <Link href="#" className="hover:text-(--btn-bg) transition-colors border border-[#777777] rounded-lg hover:border-(--btn-bg) text-[#777777]">
+                                <Facebook className="transition-colors text-[#777777] group-hover:text-(--btn-bg)" />
                             </Link>
-                            <Link href="#" className="hover:text-primary transition-colors border border-[#777777] rounded-lg hover:border-primary text-[#777777]">
-                                <Youtube className="transition-colors text-[#777777] group-hover:text-primary" />
+                            <Link href="#" className="hover:text-(--btn-bg) transition-colors border border-[#777777] rounded-lg hover:border-(--btn-bg) text-[#777777]">
+                                <Youtube className="transition-colors text-[#777777] group-hover:text-(--btn-bg)" />
                             </Link>
-                            <Link href="#" className="hover:text-primary transition-colors border border-[#777777] rounded-lg hover:border-primary text-[#777777]">
-                                <Tweeter className="transition-colors text-[#777777] group-hover:text-primary" />
+                            <Link href="#" className="hover:text-(--btn-bg) transition-colors border border-[#777777] rounded-lg hover:border-(--btn-bg) text-[#777777]">
+                                <Tweeter className="transition-colors text-[#777777] group-hover:text-(--btn-bg)" />
                             </Link>
                         </div>
                     </div>

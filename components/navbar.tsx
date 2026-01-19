@@ -40,7 +40,7 @@ export function Navbar({ user }: NavbarProps) {
     ]
 
     return (
-        <header className="fixed top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60 rounded-b-[20px] lg:rounded-b-[40px]">
+        <header className="fixed top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur supports-backdrop-filter:bg-background/60 rounded-b-[20px] lg:rounded-b-[40px]">
             <div className="main-wrapper mx-auto flex items-center justify-between px-4 py-2">
                 <SiteLogo />
 
@@ -50,7 +50,7 @@ export function Navbar({ user }: NavbarProps) {
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={`text-sm font-medium transition-colors hover:text-primary ${pathname === link.href ? "text-primary" : "text-muted-foreground"
+                            className={`text-lg font-medium transition-colors hover:text-primary ${pathname === link.href ? "text-primary" : "text-black"
                                 }`}
                         >
                             {link.label}
@@ -63,10 +63,14 @@ export function Navbar({ user }: NavbarProps) {
                     {user ? (
                         <>
                             {/* Credits display */}
-                            <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-accent px-3 py-1.5">
+                            {/* <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-accent px-3 py-1.5">
                                 <Coins className="h-4 w-4 text-primary" />
                                 <span className="text-sm font-medium text-foreground">{user.credits} Credits</span>
-                            </div>
+                            </div> */}
+                            {/* Get Startes Button */}
+                            <Button asChild>
+                                <Link href="/chat" className="font-bold font-geist tracking-[-0.04em] text-(--btn-bg)! flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 transition-all cursor-pointer bodySub bg-transparent bg-white border border-(--btn-bg) hover:text-white!">Get Started </Link>
+                            </Button>
 
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
@@ -113,10 +117,10 @@ export function Navbar({ user }: NavbarProps) {
                     ) : (
                         <div className="flex items-center">
                             <Button variant="ghost" asChild className="hidden sm:inline-flex">
-                                <Link href="/auth/login"  style={{background: 'var(--primary-gradient)'}} className="font-bold font-geist tracking-[-0.04em] text-white flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 hover:brightness-95 transition-all cursor-pointer bodySub hover:text-white">Login</Link>
+                                <Link href="/auth/login"  className="font-bold font-geist tracking-[-0.04em] text-white flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 bg-(--btn-bg) shadow-[0px_4.273px_12.819px_-4.273px_#789DF6] transition-all cursor-pointer bodySub hover:text-black">Login</Link>
                             </Button>
                             <Button asChild>
-                                <Link href="/auth/sign-up" className="font-bold font-geist tracking-[-0.04em] text-primary! flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 hover:brightness-95 transition-all cursor-pointer bodySub bg-transparent border border-primary hover:text-white!">Register</Link>
+                                <Link href="/auth/sign-up" className="font-bold font-geist tracking-[-0.04em] text-(--btn-bg)! flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 transition-all cursor-pointer bodySub bg-transparent border border-(--btn-bg) hover:text-white!">Register</Link>
                             </Button>
                         </div>
                     )}

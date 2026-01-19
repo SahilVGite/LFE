@@ -72,7 +72,7 @@ export function HeroSection({ isLoggedIn }: HeroSectionProps) {
                                 onChange={(e) => setQuery(e.target.value)}
                                 className="subTxt placeholder:text-[#9C9C9C] ring-0 outline-none border-none focus:ring-0 focus-visible:border-none focus-visible:ring-0 bg-transparent shadow-none"
                             />
-                            <button style={{background: 'var(--primary-gradient)'}} className="font-medium font-geist tracking-[-0.04em] text-white flex items-center gap-2 rounded-full py-3 px-4 ml-4 hover:brightness-95 transition-all cursor-pointer" type="submit">
+                            <button className="font-medium font-geist tracking-[-0.04em] text-white flex items-center gap-2 rounded-full py-3 px-4 ml-4 bg-(--btn-bg) shadow-[0px_4.273px_12.819px_-4.273px_#789DF6] hover:brightness-95 transition-all cursor-pointer" type="submit">
                                 <span>Check My Case Now</span>
                                 <WhiteArrowUp />
                             </button>
@@ -102,7 +102,7 @@ export function HeroSection({ isLoggedIn }: HeroSectionProps) {
                         ))}
                     </div>
                     <div className="mt-10">
-                        <Link href="/" className="border border-primary rounded-full text-primary font-medium py-3 px-9 hover:text-white hover:bg-primary hover:font-bold transition-colors">View Plans</Link>
+                        <Link href="/" className="border border-(--btn-bg) rounded-full text-(--btn-bg) font-medium py-3 px-9 hover:text-white hover:bg-primary hover:font-bold transition-colors">View Plans</Link>
                     </div>
                 </div>
             </div>

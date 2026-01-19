@@ -44,7 +44,7 @@ const BlogSec = () => {
           <BlogCard list={blogs} />
         </div>
 
-        <div><button className="text-white font-medium bodySub py-3.5 px-10 rounded-full mx-auto block cursor-pointer" style={{background: 'var(--primary-gradient)'}}>View All</button></div>
+        <div><button className="text-white bg-(--btn-bg) shadow-[0px_4.273px_12.819px_-4.273px_#789DF6] font-medium bodySub py-3.5 px-10 rounded-full mx-auto block cursor-pointer">View All</button></div>
       </div>
     </section>
   );

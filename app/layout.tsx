@@ -1,58 +1,58 @@
 import type React from "react"
 import type { Metadata } from "next"
 import {
-  Inter,
-  Noto_Sans,
-  Open_Sans,
-  Outfit,
-  Plus_Jakarta_Sans,
-  Poppins,
-  Roboto,
+    Inter,
+    Noto_Sans,
+    Open_Sans,
+    Outfit,
+    Plus_Jakarta_Sans,
+    Poppins,
+    Roboto,
 } from "next/font/google";
 import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
 const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+    subsets: ["latin"],
+    variable: "--font-inter",
 });
 
 const notoSans = Noto_Sans({
-  subsets: ["latin"],
-  variable: "--font-noto",
+    subsets: ["latin"],
+    variable: "--font-noto",
 });
 
 const openSans = Open_Sans({
-  subsets: ["latin"],
-  variable: "--font-open-sans",
+    subsets: ["latin"],
+    variable: "--font-open-sans",
 });
 
 const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
+    subsets: ["latin"],
+    variable: "--font-outfit",
 });
 
 const plusJakarta = Plus_Jakarta_Sans({
-  subsets: ["latin"],
-  variable: "--font-jakarta",
+    subsets: ["latin"],
+    variable: "--font-jakarta",
 });
 
 const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["100","200","300","400","500","600","700","800","900"],
-  variable: "--font-poppins",
+    subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+    variable: "--font-poppins",
 });
 
 const roboto = Roboto({
-  subsets: ["latin"],
-  weight: ["100","300","400","500","700","900"],
-  variable: "--font-roboto",
+    subsets: ["latin"],
+    weight: ["100", "300", "400", "500", "700", "900"],
+    variable: "--font-roboto",
 });
 
 const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist",
+    subsets: ["latin"],
+    variable: "--font-geist",
 });
 
 export const metadata: Metadata = {
@@ -93,9 +93,8 @@ export default function RootLayout({
         ${plusJakarta.variable}
         ${poppins.variable}
         ${roboto.variable}
-        ${geist.variable}
-      `}>
-            <body className="font-sans antialiased">
+        ${geist.variable} `}>
+            <body className="antialiased">
                 {children}
                 <Analytics />
             </body>

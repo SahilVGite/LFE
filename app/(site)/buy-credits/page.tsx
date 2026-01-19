@@ -23,7 +23,7 @@ export default async function BuyCreditsPage() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col headerGap">
       <BuyCreditsContent
         currentCredits={profile.credits}
         userEmail={profile.email}

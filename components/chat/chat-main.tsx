@@ -551,7 +551,7 @@ export function ChatMain({
               <Button
                 type="submit"
                 size="icon"
-                className="rounded-full bg-linear-to-b from-[#F6B501] to-[#FF7948] p-6 lg:p-8 cursor-pointer"
+                className="rounded-full bg-(--btn-bg) shadow-[0px_4.273px_12.819px_-4.273px_#789DF6] p-6 lg:p-8 cursor-pointer"
                 disabled={
                   (!input.trim() && attachments.length === 0) || isLoading
                 }
