@@ -11,7 +11,7 @@ export default async function HomePage() {
     const supabase = await createClient()
     const {
         data: { user },
-    } = await supabase.auth.getUser()
+    } = await supabase.auth.getUser() 
 
     let profile = null
     if (user) {
