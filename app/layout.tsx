@@ -1,11 +1,59 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Geist, Geist_Mono } from "next/font/google"
+import {
+    Inter,
+    Noto_Sans,
+    Open_Sans,
+    Outfit,
+    Plus_Jakarta_Sans,
+    Poppins,
+    Roboto,
+} from "next/font/google";
+import { Geist } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const _geist = Geist({ subsets: ["latin"] })
-const _geistMono = Geist_Mono({ subsets: ["latin"] })
+const inter = Inter({
+    subsets: ["latin"],
+    variable: "--font-inter",
+});
+
+const notoSans = Noto_Sans({
+    subsets: ["latin"],
+    variable: "--font-noto",
+});
+
+const openSans = Open_Sans({
+    subsets: ["latin"],
+    variable: "--font-open-sans",
+});
+
+const outfit = Outfit({
+    subsets: ["latin"],
+    variable: "--font-outfit",
+});
+
+const plusJakarta = Plus_Jakarta_Sans({
+    subsets: ["latin"],
+    variable: "--font-jakarta",
+});
+
+const poppins = Poppins({
+    subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+    variable: "--font-poppins",
+});
+
+const roboto = Roboto({
+    subsets: ["latin"],
+    weight: ["100", "300", "400", "500", "700", "900"],
+    variable: "--font-roboto",
+});
+
+const geist = Geist({
+    subsets: ["latin"],
+    variable: "--font-geist",
+});
 
 export const metadata: Metadata = {
     title: "Legal Case AI - Find & Generate Legal Cases",
@@ -15,19 +63,19 @@ export const metadata: Metadata = {
     icons: {
         icon: [
             {
-                url: "/icon-light-32x32.png",
+                url: "/favicon_io/favicon-32x32.png",
                 media: "(prefers-color-scheme: light)",
             },
             {
-                url: "/icon-dark-32x32.png",
+                url: "/favicon_io/favicon-32x32.png",
                 media: "(prefers-color-scheme: dark)",
             },
             {
-                url: "/icon.svg",
+                url: "/favicon.ico",
                 type: "image/svg+xml",
             },
         ],
-        apple: "/apple-icon.png",
+        apple: "/favicon_io/apple-touch-icon.png",
     },
 }
 
@@ -37,8 +85,16 @@ export default function RootLayout({
     children: React.ReactNode
 }>) {
     return (
-        <html lang="en">
-            <body className="font-sans antialiased">
+        <html lang="en" className={`
+        ${inter.variable}
+        ${notoSans.variable}
+        ${openSans.variable}
+        ${outfit.variable}
+        ${plusJakarta.variable}
+        ${poppins.variable}
+        ${roboto.variable}
+        ${geist.variable} `}>
+            <body className="antialiased">
                 {children}
                 <Analytics />
             </body>

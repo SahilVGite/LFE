@@ -41,7 +41,7 @@ export default function SignUpPage() {
         try {
             const supabase = createClient()
 
-            console.log("[v0] Sign up attempt for:", email)
+            console.log("Sign up attempt for:", email)
 
             const { data: existingUser } = await supabase.from("profiles").select("id").eq("email", email).maybeSingle()
 
@@ -54,12 +54,12 @@ export default function SignUpPage() {
                 password,
                 options: {
                     emailRedirectTo:
-                        process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/auth/callback`,
+                        `${window.location.origin}/auth/callback`,
                 },
             })
 
             if (signUpError) {
-                console.error("[v0] Sign up error:", signUpError)
+                console.error("Sign up error:", signUpError)
 
                 if (signUpError.message.includes("User already registered")) {
                     throw new Error("An account with this email already exists. Please login instead or use a different email.")
@@ -72,12 +72,12 @@ export default function SignUpPage() {
                 }
             }
 
-            console.log("[v0] Sign up successful:", data)
+            console.log("Sign up successful:", data)
 
             // Redirect to success page
             router.push("/auth/sign-up-success")
         } catch (error: unknown) {
-            console.error("[v0] Sign up failed:", error)
+            console.error("Sign up failed:", error)
             setError(error instanceof Error ? error.message : "Failed to create account. Please try again.")
         } finally {
             setIsLoading(false)
@@ -90,9 +90,9 @@ export default function SignUpPage() {
 
         try {
             const supabase = createClient()
-            const redirectTo = process.env.NEXT_PUBLIC_DEV_SUPABASE_REDIRECT_URL || `${window.location.origin}/auth/callback`
+            const redirectTo = `${location.origin}/auth/callback`
 
-            console.log("[v0] Google OAuth redirect:", redirectTo)
+            console.log("Google OAuth redirect:", redirectTo)
 
             const { error: oauthError } = await supabase.auth.signInWithOAuth({
                 provider: "google",
@@ -106,7 +106,7 @@ export default function SignUpPage() {
             })
 
             if (oauthError) {
-                console.error("[v0] Google OAuth error:", oauthError)
+                console.error("Google OAuth error:", oauthError)
                 if (oauthError.message.includes("not enabled")) {
                     throw new Error("Google sign-in is not configured yet. Please contact support or use email/password signup.")
                 }
@@ -115,7 +115,7 @@ export default function SignUpPage() {
 
             // OAuth will redirect, so this code won't execute
         } catch (error: unknown) {
-            console.error("[v0] Google sign up failed:", error)
+            console.error("Google sign up failed:", error)
             setError(error instanceof Error ? error.message : "Failed to sign up with Google")
             setIsGoogleLoading(false)
         }

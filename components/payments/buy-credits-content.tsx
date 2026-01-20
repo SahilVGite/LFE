@@ -116,8 +116,8 @@ export function BuyCreditsContent({ currentCredits, userEmail, userName }: BuyCr
 
                 <div className="grid md:grid-cols-2 gap-8 items-start">
                     {/* Pricing Card */}
-                    <Card className="border-2 border-primary relative overflow-hidden">
-                        <div className="absolute top-0 right-0 bg-primary text-primary-foreground px-3 py-1 text-xs font-medium">
+                    <Card className="border-2 border-(--btn-bg) relative overflow-hidden">
+                        <div className="absolute top-0 right-0 bg-(--btn-bg) text-primary-foreground px-3 py-1 text-xs font-medium">
                             Best Value
                         </div>
                         <CardHeader className="text-center pb-4">

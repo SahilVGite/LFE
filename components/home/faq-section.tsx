@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge"
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import BadgeTitle from "../BadgeTitle";
 
 const faqs = [
     {
@@ -31,20 +32,17 @@ const faqs = [
 
 export function FAQSection() {
     return (
-        <section id="faq" className="py-20 bg-secondary/30">
+        <section id="faq" className="commonGap">
             <div className="container mx-auto px-4">
-                <div className="grid lg:grid-cols-2 gap-12 items-start max-w-6xl mx-auto">
-                    <div>
-                        <Badge variant="secondary" className="mb-4 text-primary">
-                            FAQs
-                        </Badge>
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-6">Have a question?</h2>
-                        <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                            <img src="/lawyer-at-desk-with-books.jpg" alt="Lawyer at desk" className="w-full h-full object-cover" />
+                <div className="flex justify-between gap-12 items-start flex-wrap-reverse md:flex-nowrap mx-auto">
+                    <div className="w-full max-w-full md:max-w-[30%]">
+                        <div className="aspect-[0.70/1] rounded-2xl overflow-hidden">
+                            <img src="/hmFaq.png" alt="Lawyer at desk" className="w-full h-full object-cover" />
                         </div>
                     </div>
 
-                    <div className="space-y-4">
+                    <div className="max-w-full md:max-w-[70%] w-full">
+                        <BadgeTitle badge="FAQs" title="Have a question?" className="mb-5 lg:mb-13.5" />
                         <Accordion type="single" collapsible className="w-full">
                             {faqs.map((faq, index) => (
                                 <AccordionItem key={index} value={`item-${index}`}>

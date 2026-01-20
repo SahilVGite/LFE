@@ -15,6 +15,7 @@ import { createClient } from "@/lib/supabase/client"
 import type { User } from "@/lib/types"
 import { Scale, Menu, X, Coins } from "lucide-react"
 import { useState } from "react"
+import SiteLogo from "./SiteLogo"
 
 interface NavbarProps {
     user: User | null
@@ -34,26 +35,22 @@ export function Navbar({ user }: NavbarProps) {
 
     const navLinks = [
         { href: "/", label: "Home" },
-        { href: "/#how-it-works", label: "How It Works" },
-        { href: "/#features", label: "What you get" },
+        { href: "/#pricing", label: "Pricing" },
         { href: "/#faq", label: "FAQs" },
     ]
 
     return (
-        <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="container mx-auto flex h-16 items-center justify-between px-4">
-                <Link href="/" className="flex items-center gap-2">
-                    <Scale className="h-8 w-8 text-primary" />
-                    <span className="text-xl font-bold text-foreground">LegalCaseAI</span>
-                </Link>
+        <header className="fixed top-0 z-50 w-full border-b border-border bg-background/90 backdrop-blur supports-backdrop-filter:bg-background/60 rounded-b-[20px] lg:rounded-b-[40px]">
+            <div className="main-wrapper mx-auto flex items-center justify-between px-4 py-2">
+                <SiteLogo />
 
                 {/* Desktop Navigation */}
-                <nav className="hidden md:flex items-center gap-6">
+                <nav className="hidden md:flex items-center gap-10 lg:gap-20">
                     {navLinks.map((link) => (
                         <Link
                             key={link.href}
                             href={link.href}
-                            className={`text-sm font-medium transition-colors hover:text-primary ${pathname === link.href ? "text-primary" : "text-muted-foreground"
+                            className={`text-lg font-medium transition-colors hover:text-primary ${pathname === link.href ? "text-primary" : "text-black"
                                 }`}
                         >
                             {link.label}
@@ -66,10 +63,14 @@ export function Navbar({ user }: NavbarProps) {
                     {user ? (
                         <>
                             {/* Credits display */}
-                            <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-accent px-3 py-1.5">
+                            {/* <div className="hidden sm:flex items-center gap-1.5 rounded-full bg-accent px-3 py-1.5">
                                 <Coins className="h-4 w-4 text-primary" />
                                 <span className="text-sm font-medium text-foreground">{user.credits} Credits</span>
-                            </div>
+                            </div> */}
+                            {/* Get Startes Button */}
+                            <Button asChild>
+                                <Link href="/chat" className="font-bold font-geist tracking-[-0.04em] text-(--btn-bg)! flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 transition-all cursor-pointer bodySub bg-transparent bg-white border border-(--btn-bg) hover:text-white!">Get Started </Link>
+                            </Button>
 
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
@@ -114,12 +115,12 @@ export function Navbar({ user }: NavbarProps) {
                             </DropdownMenu>
                         </>
                     ) : (
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center">
                             <Button variant="ghost" asChild className="hidden sm:inline-flex">
-                                <Link href="/auth/login">Login</Link>
+                                <Link href="/auth/login"  className="font-bold font-geist tracking-[-0.04em] text-white flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 bg-(--btn-bg) shadow-[0px_4.273px_12.819px_-4.273px_#789DF6] transition-all cursor-pointer bodySub hover:text-black">Login</Link>
                             </Button>
                             <Button asChild>
-                                <Link href="/auth/sign-up">Get Started</Link>
+                                <Link href="/auth/sign-up" className="font-bold font-geist tracking-[-0.04em] text-(--btn-bg)! flex items-center gap-2 rounded-[50px]! py-5 px-8 ml-4 transition-all cursor-pointer bodySub bg-transparent border border-(--btn-bg) hover:text-white!">Register</Link>
                             </Button>
                         </div>
                     )}
