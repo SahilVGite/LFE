@@ -1,54 +1,62 @@
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { OrangeUpload, AnalysesKey, OrangeReport } from "../svg";
-import BadgeTitle from "../BadgeTitle"
+import { Upload, Search, FileText } from "lucide-react"
 
 const steps = [
     {
         step: "Step 1",
-        title: "Enter your case details",
+        title: "Upload case summary",
         description:
-            "This is dummy text will be replaced with original content",
-        icon: OrangeUpload,
+            "This is dummy text will be replaced with original content. This is dummy text will be replaced with original content.",
+        icon: Upload,
     },
     {
         step: "Step 2",
-        title: "System analyses key factors",
+        title: "Our system analyses landmark cases",
         description:
-            "This is dummy text will be replaced with original content",
-        icon: AnalysesKey,
+            "This is dummy text will be replaced with original content. This is dummy text will be replaced with original content.",
+        icon: Search,
     },
     {
         step: "Step 3",
-        title: "Receive your report instantly within minutes",
+        title: "Get a clear prediction report",
         description:
-            "This is dummy text will be replaced with original content",
-        icon: OrangeReport,
+            "This is dummy text will be replaced with original content. This is dummy text will be replaced with original content.",
+        icon: FileText,
     },
 ]
 
 export function HowItWorks() {
     return (
-        <section id="how-it-works" className="commonGap">
-            <div className="sub-wrapper mx-auto px-4">
-                <BadgeTitle className="text-center max-w-188 mx-auto mb-22.5" badge="How It Works" title="Ready to assist you with anything you need legally" />
-                <div className="flex flex-wrap lg:flex-nowrap justify-center items-stretch gap-8 mx-auto">
+        <section id="how-it-works" className="py-20 bg-background">
+            <div className="container mx-auto px-4">
+                <div className="text-center mb-12">
+                    <Badge variant="secondary" className="mb-4 text-primary">
+                        How It Works
+                    </Badge>
+                    <h2 className="text-3xl md:text-4xl font-bold text-foreground text-balance">
+                        Ready to assist you with anything you
+                        <br />
+                        need legally
+                    </h2>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
                     {steps.map((item, index) => (
-                        <Card key={index} className="relative border border-[#E3E3E3] shadow-[0px_13px_40px_4px_rgba(112,144,176,0.14)] rounded-3xl lg:rounded-[40px] py-4 px-4 lg:py-7 lg:px-7.5 w-full md:w-[calc(50%-32px)] lg:w-[calc(33.333%-32px)]">
-                            <CardContent className="p-3 text-center">
-                                <Badge className="absolute top-6 left-6 bg-primary txtSub text-white font-medium font-geist tracking-[-0.04em] rounded-full">
+                        <Card key={index} className="relative bg-card border-border hover:shadow-lg transition-shadow">
+                            <CardContent className="pt-8 pb-6 px-6 text-center">
+                                <Badge className="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-primary-foreground">
                                     {item.step}
                                 </Badge>
-                                <div className="w-fit p-6 rounded-full bg-[#FFF7EB] outline-2 outline-[#FFF7EB] border-8 border-white ring-1 ring-[#FFF7EB] flex items-center justify-center mx-auto mb-4">
-                                    <item.icon />
+                                <div className="w-16 h-16 rounded-2xl bg-accent flex items-center justify-center mx-auto mb-4">
+                                    <item.icon className="h-8 w-8 text-primary" />
                                 </div>
-                                <h3 className="font-semibold mb-2 subTitle text-[#212121]">{item.title}</h3>
-                                <p className="text-[#747474] leading-[2em] body font-poppins">{item.description}</p>
+                                <h3 className="font-semibold text-lg mb-2 text-foreground">{item.title}</h3>
+                                <p className="text-sm text-muted-foreground">{item.description}</p>
                             </CardContent>
                         </Card>
                     ))}
                 </div>
-                <div className="mt-25"><button className="text-white bg-(--btn-bg) shadow-[0px_4.273px_12.819px_-4.273px_#789DF6] font-medium bodySub py-3.5 px-10 rounded-full mx-auto block cursor-pointer">Preview Sample Report</button></div>
             </div>
         </section>
     )

@@ -2,8 +2,12 @@ import { createServerClient } from "@supabase/ssr"
 import { NextResponse, type NextRequest } from "next/server"
 
 export async function updateSession(request: NextRequest) {
-    let supabaseResponse = NextResponse.next({ request })
+    let supabaseResponse = NextResponse.next({
+        request,
+    })
 
+    // With Fluid compute, don't put this client in a global environment
+    // variable. Always create a new one on each request.
     const supabase = createServerClient(
         process.env.NEXT_PUBLIC_SUPABASE_URL!,
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
@@ -13,54 +17,60 @@ export async function updateSession(request: NextRequest) {
                     return request.cookies.getAll()
                 },
                 setAll(cookiesToSet) {
-                    // 1. Update request cookies for the current execution
                     cookiesToSet.forEach(({ name, value }) => request.cookies.set(name, value))
-
-                    // 2. Refresh the response object to include new cookies
-                    supabaseResponse = NextResponse.next({ request })
-
-                    // 3. Set cookies on the final response for the browser
-                    cookiesToSet.forEach(({ name, value, options }) =>
-                        supabaseResponse.cookies.set(name, value, options)
-                    )
+                    supabaseResponse = NextResponse.next({
+                        request,
+                    })
+                    cookiesToSet.forEach(({ name, value, options }) => supabaseResponse.cookies.set(name, value, options))
                 },
             },
         },
     )
 
-    // IMPORTANT: getUser() triggers the refresh logic if the session is expired
-    const { data: { user } } = await supabase.auth.getUser()
+    // Do not run code between createServerClient and
+    // supabase.auth.getUser(). A simple mistake could make it very hard to debug
+    // issues with users being randomly logged out.
 
-    const path = request.nextUrl.pathname
+    // IMPORTANT: If you remove getUser() and you use server-side rendering
+    // with the Supabase client, your users may be randomly logged out.
+    const {
+        data: { user },
+    } = await supabase.auth.getUser()
+
+    // Normal protected routes
     const protectedRoutes = ["/dashboard", "/buy-credits", "/results", "/success", "/cancel", "/chat"]
-    const isUserProtectedRoute = protectedRoutes.some((route) => path.startsWith(route))
-    const isAdminPath = path.startsWith("/admin")
-    const isAdminLogin = path === "/admin/login"
 
-    // Redirect logic: Protected User Routes
-    if (isUserProtectedRoute && !user) {
+    // Admin protected routes — BUT exclude login page
+    const isAdminProtected = request.nextUrl.pathname.startsWith("/admin") && request.nextUrl.pathname !== "/admin/login"
+
+    const isUserProtected = protectedRoutes.some((route) => request.nextUrl.pathname.startsWith(route))
+
+    // Block normal access
+    if (isUserProtected && !user) {
         const url = request.nextUrl.clone()
         url.pathname = "/auth/login"
-        url.searchParams.set("redirect", path)
+        url.searchParams.set("redirect", request.nextUrl.pathname)
         return NextResponse.redirect(url)
     }
 
-    // Redirect logic: Protected Admin Routes
-    if (isAdminPath && !isAdminLogin) {
-        if (!user) {
-            return NextResponse.redirect(new URL("/admin/login", request.url))
-        }
+    // Block admin pages EXCEPT admin/login
+    if (isAdminProtected && !user) {
+        const url = request.nextUrl.clone()
+        url.pathname = "/admin/login"
+        return NextResponse.redirect(url)
+    }
 
-        const { data: profile } = await supabase
-            .from("profiles")
-            .select("role")
-            .eq("id", user.id)
-            .single()
+    // If user is logged in but NOT admin → block admin pages
+    if (isAdminProtected && user) {
+        const { data: profile } = await supabase.from("profiles").select("role").eq("id", user.id).single()
 
         if (profile?.role !== "admin") {
-            return NextResponse.redirect(new URL("/admin/login?error=unauthorized", request.url))
+            const url = request.nextUrl.clone()
+            url.pathname = "/admin/login"
+            return NextResponse.redirect(url)
         }
     }
 
+    // IMPORTANT: You *must* return the supabaseResponse object as it is.
     return supabaseResponse
 }
