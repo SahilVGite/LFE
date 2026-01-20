@@ -238,6 +238,22 @@ html {
 .subBody{font-size: var(--sub-body);} /* 14px */
 .smallTxt{font-size: var(--small-txt);} /* 12px */
 
+.cases-header-bg {
+  background-image:
+    url("/caseListBg.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.cases-detail-header-bg {
+  background-image:
+    url("/caseDetailBg.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
 
 /* Responsive */

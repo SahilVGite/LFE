@@ -11,10 +11,12 @@ export interface LegalCase {
     id: string
     title: string
     summary: string
-    tags: string[]
+    content?: string
     court: string
     year: number
-    content: string
+    judge?: string
+    tags?: string[]
+    image_url?: string
     created_at: string
     updated_at: string
 }

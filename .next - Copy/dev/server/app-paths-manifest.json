@@ -1,0 +1,8 @@
+{
+  "/(site)/buy-credits/page": "app/(site)/buy-credits/page.js",
+  "/(site)/dashboard/page": "app/(site)/dashboard/page.js",
+  "/(site)/page": "app/(site)/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/auth/login/page": "app/auth/login/page.js",
+  "/chat/page": "app/chat/page.js"
+}
